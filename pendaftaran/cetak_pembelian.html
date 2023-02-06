@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Cetak</title>
+    <link rel="icon" type="image/x-icon" href="../assets/logo/daffa_cosmetik.png" />
+</head>
+
+<body>
+    <table align="center" style="margin-top: 70px;">
+        <tr>
+            <table border="1" align="center">
+                <h1 style="text-align: center;">Cetak Bukti Pembayaran</h1>
+                <tr>
+                    <td rowspan="6" width="150" align="center"><img src="../images/daffa.png" width="150"></td>
+                </tr>
+                <tr>
+                    <td width="200">Nama Pembeli</td>
+                    <td width="400" id="dataPembeli"></td>
+                </tr>
+                <tr>
+                    <td>Nama Barang</td>
+                    <td id="dataBarang">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tanggal Pembelian</td>
+                    <td colspan="2" id="dataTanggal">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Alamat Pengiriman</td>
+                    <td colspan="2" id="dataAlamat"></td>
+                </tr>
+                <tr>
+                    <td>Metode Bayar</td>
+                    <td colspan="2" id="dataMetode">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Harga Satuan</td>
+                    <td colspan="2" id="dataSatuan"></td>
+                </tr>
+                <tr>
+                    <td>Jumlah Barang</td>
+                    <td colspan="2" id="dataJumlah">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sub Total</td>
+                    <td colspan="2" id="dataSub">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Diskon</td>
+                    <td colspan="2" id="dataDiskon">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Potongan</td>
+                    <td colspan="2" id="dataPotongan">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Harga Bersih</td>
+                    <td colspan="2" id="dataHargaBersih">
+                    </td>
+                </tr>
+            </table>
+        </tr>
+        <button style="margin-left: 285px; margin-top: 20px;" onclick="window.print()">Print Bukti</button>
+    </table>
+
+    <script type="text/javascript">
+
+        // Ini berfungsi untuk membuat proses ketika halaman sedang di Load (pindah halaman)
+        window.addEventListener('load', () => {
+
+            // Cari/tangkap parameter yang tersimpan pada URL web
+            let params = (new URL(document.location)).searchParams;
+
+            // Variabel untuk mengambil data dari form input berdasarkan pencarian Parameter
+            let pembeli = params.get('inputPembeli');
+            let alamat = params.get('inputAlamat');
+            let barang = params.get('inputBarang');
+            let jumlah = params.get('inputJumlah');
+            let harga = params.get('inputHarga');
+            let metode = params.get('inputMetode');
+            let diskon = params.get('inputDiskon');
+
+            function hitung() {
+                let subTotal = (jumlah * harga);
+                return subTotal;
+            }
+
+            function dis_kon() {
+                let subDiskon = (diskon / 100) * hitung();
+                return subDiskon;
+            }
+
+            function harga_bersih() {
+                let subHargaBersih = hitung() - dis_kon();
+                return subHargaBersih;
+            }
+
+            // Membuat format tanggal, tahun, bulan, dan hari bawaan pada Javascript
+            let date = new Date();
+            let year = date.getFullYear();
+            let month = date.getMonth() + 1;
+            let day = date.getDate();
+
+            document.getElementById("dataPembeli").innerHTML = pembeli;
+            document.getElementById("dataBarang").innerHTML = barang;
+            document.getElementById("dataTanggal").innerHTML = "Cilacap, " + day + "-" + month + "-" + year;
+            document.getElementById("dataAlamat").innerHTML = alamat;
+            document.getElementById("dataJumlah").innerHTML = jumlah + " pcs";
+            document.getElementById("dataSatuan").innerHTML = "Rp." + harga;
+            document.getElementById("dataSub").innerHTML = "Rp." + hitung();
+            document.getElementById("dataMetode").innerHTML = metode;
+
+            document.getElementById("dataDiskon").innerHTML = diskon + "%";
+            document.getElementById("dataPotongan").innerHTML = "Rp." + dis_kon();
+            document.getElementById("dataHargaBersih").innerHTML = "Rp." + harga_bersih();
+        })
+    </script>
+
+
+</body>
+
+</html>

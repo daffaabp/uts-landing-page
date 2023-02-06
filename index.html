@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>Login</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/logo_daffa_cosmetik.png" />
+
+  <!-- loader-->
+  <link href="assets/css/pace.min.css" rel="stylesheet" />
+  <!-- Bootstrap core CSS-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- animate CSS-->
+  <link href="assets/css/animate.css" rel="stylesheet" type="text/css" />
+  <!-- Icons CSS-->
+  <link href="assets/css/icons.css" rel="stylesheet" type="text/css" />
+  <!-- Custom Style-->
+  <link href="assets/css/app-style.css" rel="stylesheet" />
+
+</head>
+
+<body
+  style="background-image: url(assets/images/bg-themes/bg_daffa1.jpg); background-position: center top; background-size: cover;">
+
+  <!-- start loader -->
+  <div id="pageloader-overlay" class="visible incoming">
+    <div class="loader-wrapper-outer">
+      <div class="loader-wrapper-inner">
+        <div class="loader"></div>
+      </div>
+    </div>
+  </div>
+  <!-- end loader -->
+
+  <!-- Start wrapper-->
+  <div id="wrapper">
+
+    <div class="loader-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
+    <div class="card card-authentication1 mx-auto my-5" style="width: 450px;">
+
+      <div class="container">
+        <div class="card-body">
+          <div class="card-content p-2" style="width: 400px;">
+            <div class="text-center">
+              <img src="assets/images/logo_daffa_cosmetik.png" alt="logo icon" style="height: 100px; width: 100px;"
+                class="text-center">
+            </div>
+            <div class="card-title text-center py-3" style="font-size: 20px;">Selamat Datang di "Daffa Cosmetics"
+            </div>
+            <form>
+
+              <!-- Username -->
+              <div class="form-group">
+                <label for="floatingUsername" class="sr-only">Username</label>
+                <div class="position-relative has-icon-right">
+                  <input type="text" id="floatingUsername" class="form-control input-shadow"
+                    style="background-color: rgba(0, 0, 0, 0.5);" placeholder="Masukkan Username">
+                  <div class="form-control-position">
+                    <i class="icon-user"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- Username -->
+
+              <!-- Password -->
+              <div class="form-group">
+                <label for="floatingPassword" class="sr-only">Password</label>
+                <div class="position-relative has-icon-right">
+                  <input type="password" id="floatingPassword" class="form-control input-shadow"
+                    style="background-color: rgba(0, 0, 0, 0.5);" placeholder=" Masukkan Password">
+                  <div class="form-control-position">
+                    <i class="icon-lock"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- Password -->
+
+              <div class="form-row">
+                <div class="form-group col-6">
+                  <div class="icheck-material-white">
+                    <input type="checkbox" id="user-checkbox">
+                    <label for="user-checkbox">Remember me</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Button -->
+              <button type="submit" class="btn btn-light btn-block" style="background-color: rgba(0, 0, 0, 0.5);"
+                onclick="validasi()">Sign In</button>
+              <!-- Button -->
+
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      function validasi() {
+        let email = document.getElementById("floatingUsername").value;
+        let pass = document.getElementById("floatingPassword").value;
+
+        if (email == "210102005" && pass == "210102005") {
+          window.open("dashboard.html");
+        }
+        else {
+          alert("Email atau Password salah");
+        }
+      }
+    </script>
+
+</body>
+
+</html>
